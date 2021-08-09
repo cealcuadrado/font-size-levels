@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -7,10 +7,21 @@
     </button>
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">
-          <i class="fa fa-font fa-fw"></i>
+        <a class="nav-link active" aria-current="page" href="#" [ngbPopover]="popContent" [popoverTitle]="popTitle">
+          <i class="fa fa-font fa-fw text-primary"></i>
         </a>
       </li>
     </ul>
   </div>
 </nav>
+
+<ng-template #popTitle>
+  Tamaño del texto
+</ng-template>
+<ng-template #popContent>
+  <button *ngFor="let button of buttons; let indexOfButton = index" class="btn btn-primary {{button}}"
+          [ngClass]="{'active':isActive(indexOfButton+1)}" (click)="cambiarNivelTamannio(indexOfButton+1)">
+    <i class="fa fa-font fa-fw"></i>
+  </button>
+</ng-template>
+
