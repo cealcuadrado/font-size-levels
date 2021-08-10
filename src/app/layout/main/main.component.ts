@@ -20,4 +20,8 @@ export class MainComponent implements OnInit {
     });
   }
 
+  public setearNivelTamannio(): string {
+    return `nivel-tamannio-${this.nivelTamannio}`;
+  }
+
 }

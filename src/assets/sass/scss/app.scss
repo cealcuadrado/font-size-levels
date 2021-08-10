@@ -1,0 +1,40 @@
+@use "sass:map";
+
+@mixin nivel-tamannio($base-size, $h1-size, $h2-size) {
+  font-size: $base-size !important;
+  h1 { font-size: $h1-size !important; }
+  h2 { font-size: $h2-size !important; }
+  h3, p, a, ul li, ol li, code, label, input, textarea, select, table, .nivel, .card-actions,
+  .ng-select, .c-btn, .pretty {
+    font-size: $base-size !important;
+  }
+
+  .fc {
+    h1 { font-size: $h1-size !important; }
+    h2 { font-size: $h2-size !important; }
+    table { font-size: inherit !important; }
+  }
+
+  .ngb-dp-header {
+    select {
+      font-size: inherit !important;
+    }
+  }
+}
+
+$niveles-tamannio: (
+  (h1: 1.25rem, h2: 1.125rem, base: 1rem),
+  (h1: 1.7rem, h2: 1.4rem, base: 1.2rem),
+  (h1: 2rem, h2: 1.75rem, base: 1.5rem)
+);
+
+@each $nivel in $niveles-tamannio {
+  $index: index($niveles-tamannio, $nivel);
+  $h1: map-get($nivel, h1);
+  $h2: map-get($nivel, h2);
+  $base: map-get($nivel, base);
+
+  .nivel-tamannio-#{$index} {
+    @include nivel-tamannio($base, $h1, $h2);
+  }
+}
